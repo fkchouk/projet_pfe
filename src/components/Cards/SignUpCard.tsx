@@ -12,7 +12,7 @@ export default function SignUpCard() {
   const [service, setService] = useState('');
   const [isValidateur, setIsValidateur] = useState(false);
   const [isDemandeur, setIsDemandeur] = useState(false);
-  
+
   const [errors, setErrors] = useState({
     name: false,
     prenom: false,
@@ -25,6 +25,11 @@ export default function SignUpCard() {
     service: false,
     role: false,
   });
+
+  // Options pour les listes déroulantes
+  const sites = ['Site A', 'Site B', 'Site C'];
+  const directions = ['Direction X', 'Direction Y', 'Direction Z'];
+  const services = ['Service 1', 'Service 2', 'Service 3'];
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -150,25 +155,33 @@ export default function SignUpCard() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="mb-4">
             <label htmlFor="site" className="block text-gray-700">Site <span className="text-red-600">*</span></label>
-            <input
-              type="text"
+            <select
               id="site"
               value={site}
               onChange={(e) => setSite(e.target.value)}
               className={`w-full px-4 py-2 border ${errors.site ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
-            />
+            >
+              <option value="">Sélectionnez un site</option>
+              {sites.map((siteOption, index) => (
+                <option key={index} value={siteOption}>{siteOption}</option>
+              ))}
+            </select>
             {errors.site && <p className="text-red-500 text-sm">Champ obligatoire</p>}
           </div>
 
           <div className="mb-4">
             <label htmlFor="direction" className="block text-gray-700">Direction <span className="text-red-600">*</span></label>
-            <input
-              type="text"
+            <select
               id="direction"
               value={direction}
               onChange={(e) => setDirection(e.target.value)}
               className={`w-full px-4 py-2 border ${errors.direction ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
-            />
+            >
+              <option value="">Sélectionnez une direction</option>
+              {directions.map((directionOption, index) => (
+                <option key={index} value={directionOption}>{directionOption}</option>
+              ))}
+            </select>
             {errors.direction && <p className="text-red-500 text-sm">Champ obligatoire</p>}
           </div>
         </div>
@@ -176,13 +189,17 @@ export default function SignUpCard() {
         {/* Ligne 5 : Service */}
         <div className="mb-4">
           <label htmlFor="service" className="block text-gray-700">Service <span className="text-red-600">*</span></label>
-          <input
-            type="text"
+          <select
             id="service"
             value={service}
             onChange={(e) => setService(e.target.value)}
             className={`w-full px-4 py-2 border ${errors.service ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
-          />
+          >
+            <option value="">Sélectionnez un service</option>
+            {services.map((serviceOption, index) => (
+              <option key={index} value={serviceOption}>{serviceOption}</option>
+            ))}
+          </select>
           {errors.service && <p className="text-red-500 text-sm">Champ obligatoire</p>}
         </div>
 

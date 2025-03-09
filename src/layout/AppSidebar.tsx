@@ -15,7 +15,7 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 const navItems = [
   { icon: <DashboardIcon />, name: "Dashboard", path: "/" },
   { icon: <AccountCircleIcon />, name: "Utilisateurs", path: "/tabUsers" },
-  { icon: <PersonAddIcon />, name: "SignUpUser", path: "/SingUpUser" },
+  { icon: <PersonAddIcon />, name: "SignUpUser", path: "/SignUpUser" },
   { icon: <TableChartIcon />, name: "DAS", path: "/das" },
   { icon: <InsertPageBreakIcon />, name: "Réclamations", path: "/reclamations" },
   { icon: <ListAltIcon />, name: "Budgets", path: "/budgets" },
